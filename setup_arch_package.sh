@@ -35,11 +35,12 @@ license=("MIT")
 depends=(
     "qt6-base"
     "md4c"
+)
+optdepends=(
     "termind"
 )
 makedepends=(
-    "cmake"
-    "gcc"
+    imagemagick
 )
 source=(
     "termind-desktop"
@@ -70,10 +71,9 @@ prepare() {
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Type=Application
-Name=Termind
+Name=Termind Desktop
 Comment=High-performance native desktop GUI for Termind autonomous AI engineering assistant
-Exec=termind %U
-Icon=utilities-terminal
+Exec=termind-desktop %U
 Icon=${_icon}
 Terminal=false
 Categories=Development;IDE;

@@ -18,7 +18,7 @@ if [ -z "$CMAKE_PREFIX_PATH" ]; then
 fi
 
 # 2. Очистка старой сборки
-rm -rf build-macos dmg_root Studio-3D-Viewer.dmg
+rm -rf build-macos dmg_root Termind-Desktop.dmg
 mkdir -p build-macos
 
 # 3. Конфигурация и компиляция Universal Binary (Intel + Apple Silicon)
@@ -31,26 +31,26 @@ cmake --build build-macos -j$(sysctl -n hw.ncpu)
 
 # 4. Развертывание зависимостей Qt внутрь бандла .app
 if command -v macdeployqt &> /dev/null; then
-    macdeployqt "build-macos/Studio 3D Viewer.app" 2>&1 | grep -v -E "Cannot resolve rpath|using QList|using QSet" || true
+    macdeployqt "build-macos/Termind Desktop.app" 2>&1 | grep -v -E "Cannot resolve rpath|using QList|using QSet" || true
 fi
 
 # Принудительная локальная подпись компонентов
-codesign --force --deep --sign - "build-macos/Studio 3D Viewer.app"
+codesign --force --deep --sign - "build-macos/Termind Desktop.app"
 
 # 5. Упаковка в установщик DMG
 if command -v create-dmg &> /dev/null; then
     mkdir -p dmg_root
-    cp -R "build-macos/Studio 3D Viewer.app" dmg_root/
+    cp -R "build-macos/Termind Desktop.app" dmg_root/
 
     create-dmg \
-      --volname "Studio 3D Viewer Installer" \
+      --volname "Termind Desktop Installer" \
       --window-pos 200 120 \
       --window-size 600 450 \
       --icon-size 100 \
-      --icon "Studio 3D Viewer.app" 150 150 \
-      --hide-extension "Studio 3D Viewer.app" \
+      --icon "Termind Desktop.app" 150 150 \
+      --hide-extension "Termind Desktop.app" \
       --app-drop-link 450 150 \
-      Studio-3D-Viewer.dmg \
+      Termind-Desktop.dmg \
       dmg_root/ > /dev/null 2>&1
 
     rm -rf dmg_root

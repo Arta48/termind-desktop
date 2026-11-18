@@ -334,7 +334,6 @@ void MainWindow::startWorkspace(const QString& workspaceDir) {
     if (m_settingsDialog) {
         m_settingsDialog->resetMcpLog();
     }
-    setWindowTitle(QString("Termind Desktop — %1").arg(workspaceDir));
     setStatusIndicator("#f0883e", QString("Starting backend in %1...").arg(workspaceDir));
 
     QSettings settings;

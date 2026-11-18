@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(Studio-3D-Viewer)
-set(EXE_NAME Studio-3D-Viewer)
+project(termind-desktop)
+set(EXE_NAME termind-desktop)
 
 # --- Настройки стандартов C++ и Qt ---
 set(CMAKE_CXX_STANDARD 17)
@@ -54,7 +54,7 @@ if(WIN32)
     set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
 
     # Принудительно подключаем Winsock2, Crypt32 и OpenGL в самый конец линковки
-    set(CMAKE_CXX_STANDARD_LIBRARIES "-lws2_32 -lcrypt32 -lopengl32 ${CMAKE_CXX_STANDARD_LIBRARIES}")
+    set(CMAKE_CXX_STANDARD_LIBRARIES "-lws2_32 -lcrypt32 -lopengl32 -lbcrypt ${CMAKE_CXX_STANDARD_LIBRARIES}")
 
     add_definitions(-DQT_STATIC)
 endif()

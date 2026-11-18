@@ -17,7 +17,7 @@ if not exist "%MSYS2_DIR%\usr\bin\bash.exe" (
     )
 )
 
-set "LIST=mingw-w64-x86_64-qt6-static mingw-w64-x86_64-cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-pcre2 mingw-w64-x86_64-icu mingw-w64-x86_64-libpng mingw-w64-x86_64-libjpeg-turbo mingw-w64-x86_64-freetype mingw-w64-x86_64-harfbuzz mingw-w64-x86_64-brotli mingw-w64-x86_64-zstd mingw-w64-x86_64-double-conversion mingw-w64-x86_64-libwebp mingw-w64-x86_64-libtiff mingw-w64-x86_64-vulkan-headers"
+set "LIST=mingw-w64-x86_64-qt6-static mingw-w64-x86_64-cmake mingw-w64-x86_64-ninja mingw-w64-x86_64-toolchain mingw-w64-x86_64-pcre2 mingw-w64-x86_64-icu mingw-w64-x86_64-libpng mingw-w64-x86_64-libjpeg-turbo mingw-w64-x86_64-freetype mingw-w64-x86_64-harfbuzz mingw-w64-x86_64-brotli mingw-w64-x86_64-zstd mingw-w64-x86_64-double-conversion mingw-w64-x86_64-libwebp mingw-w64-x86_64-libtiff mingw-w64-x86_64-vulkan-headers"
 "%MSYS2_DIR%\usr\bin\bash.exe" -lc "pacman -S --noconfirm --needed !LIST!"
 
 set "PATH=%MSYS2_DIR%\mingw64\bin;%MSYS2_DIR%\usr\bin;%PATH%"
@@ -27,7 +27,7 @@ rmdir /s /q build-windows
 mkdir build-windows
 
 REM 2. Конфигурация и сборка через CMake
-cmake -S . -B build-windows -G "MinGW Makefiles"
+cmake -S . -B build-windows -G "Ninja"
 cmake --build build-windows -j %NUMBER_OF_PROCESSORS%
 
 REM 3. Уведомление

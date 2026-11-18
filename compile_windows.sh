@@ -11,8 +11,8 @@ rm -rf build-windows
 mkdir -p build-windows
 
 # 2. Конфигурация и сборка через CMake
-if [[ "$(uname)" == *"MINGW"* ]] || [[ "$(uname)" == *"MSYS"* ]]; then # Github Actions
-    cmake -S . -B build-windows -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release
+if [[ "$(uname)" == *"MINGW"* ]] || [[ "$(uname)" == *"MSYS"* ]] || [[ "$(uname)" == *"UCRT"* ]]; then # Github Actions
+    cmake -S . -B build-windows -G "Ninja" -DCMAKE_BUILD_TYPE=Release
     cmake --build build-windows -j$(nproc 2>/dev/null || echo 2)
 else # Linux
     x86_64-w64-mingw32-cmake -B build-windows -DCMAKE_BUILD_TYPE=Release
