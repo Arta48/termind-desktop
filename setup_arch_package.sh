@@ -44,9 +44,9 @@ makedepends=(
 )
 source=(
     "termind-desktop"
+    "icon.png"
     "README.md"
     "LICENSE"
-    "icon.png"
 )
 sha256sums=(
     "SKIP"
