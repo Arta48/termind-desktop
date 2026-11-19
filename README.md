@@ -1,5 +1,7 @@
 # 🖥️ Termind Desktop
 
+![Termind Desktop Preview](assets/Pictures/termind-desktop_preview.png)
+
 ![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)
 ![Qt6](https://img.shields.io/badge/GUI-Qt6%20Widgets-green.svg)
 ![Protocol](https://img.shields.io/badge/Protocol-JSON--RPC%202.0-orange.svg)
